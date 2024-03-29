@@ -47,7 +47,9 @@ const Checkout = () => {
                             <th></th>
                         </tr>
                     </thead>
-                    <tbody>{/* Products should be rendered here */}</tbody>
+                    <tbody>
+                        <Product />
+                    </tbody>
                 </table>
                 <h2>Order summary</h2>
                 <p>Discount: $ </p>
