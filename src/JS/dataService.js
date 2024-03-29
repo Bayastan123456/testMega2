@@ -7,17 +7,21 @@ function getData(endpoint) {
     return new Promise((resolve, reject) => {
         if (delay < 1800) {
             const successId = setTimeout(function () {
-                fetch(endpoint).then((res) => {
-                    clearTimeout(successId)
-                    resolve(res.json())
-                })
+                fetch(endpoint)
+                    .then((res) => {
+                        clearTimeout(successId)
+                        resolve(res.json())
+                    })
+                    .catch((error) => reject(error))
             }, delay)
         } else {
             const failId = setTimeout(function () {
-                fetch(endpoint).then((res) => {
-                    clearTimeout(failId)
-                    reject(res.json())
-                })
+                fetch(endpoint)
+                    .then((res) => {
+                        clearTimeout(failId)
+                        reject(res.json())
+                    })
+                    .catch((error) => reject(error))
             }, delay)
         }
     })
