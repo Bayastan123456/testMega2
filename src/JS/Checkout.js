@@ -2,7 +2,12 @@ import { useEffect } from 'react'
 import styles from './Checkout.module.css'
 import { LoadingIcon } from './Icons'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchProducts, updateQuantity } from './productSlice'
+import {
+    fetchProducts,
+    selectProducts,
+    selectTotalPrice,
+    updateQuantity,
+} from './productSlice'
 import { getProducts } from './dataService'
 
 const Product = ({
@@ -12,9 +17,19 @@ const Product = ({
     price,
     orderedQuantity,
     total,
-    handleDecrement,
-    handleIncrement,
 }) => {
+    const dispatch = useDispatch()
+    const handleIncrement = () => {
+        if (orderedQuantity < availableCount) {
+            dispatch(updateQuantity({ id, quantity: orderedQuantity + 1 }))
+        }
+    }
+
+    const handleDecrement = () => {
+        if (orderedQuantity > 0) {
+            dispatch(updateQuantity({ id, quantity: orderedQuantity - 1 }))
+        }
+    }
     return (
         <tr>
             <td>{id}</td>
@@ -43,10 +58,10 @@ const Product = ({
 
 const Checkout = () => {
     const dispatch = useDispatch()
-    const products = useSelector((state) => state.products)
-    const loading = useSelector((state) => state.loading)
-    const error = useSelector((state) => state.error)
-
+    const products = useSelector(selectProducts)
+    const totalPrice = useSelector(selectTotalPrice)
+    const loading = useSelector((state) => state.products.loading)
+    const error = useSelector((state) => state.products.error)
     useEffect(() => {
         dispatch(fetchProducts())
     }, [dispatch])
@@ -61,17 +76,6 @@ const Checkout = () => {
             })
     }, [])
 
-    const handleIncrement = () => {
-        dispatch(updateQuantity({ id, quantity: orderedQuantity + 1 }))
-    }
-
-    const handleDecrement = () => {
-        if (orderedQuantity > 0) {
-            dispatch(updateQuantity({ id, quantity: orderedQuantity - 1 }))
-        }
-    }
-
-    const totalPrice = (price * orderedQuantity).toFixed(2)
     const discount = totalPrice > 1000 ? (totalPrice * 0.1).toFixed(2) : 0
     const discountedTotalPrice = (totalPrice - discount).toFixed(2)
     return (
@@ -109,8 +113,6 @@ const Checkout = () => {
                                 availableCount={product.availableCount}
                                 price={product.price}
                                 orderedQuantity={product.orderedQuantity}
-                                handleIncrement={handleIncrement}
-                                handleDecrement={handleDecrement}
                             />
                         ))}
                     </tbody>
