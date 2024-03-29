@@ -1,8 +1,8 @@
 {
-  "name": "toptal-checkout-react",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
+    "name": "toptal-checkout-react",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
         "@reduxjs/toolkit": "^1.9.3",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
@@ -33,30 +33,30 @@
             "react-app/jest"
         ]
     },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.55.0",
-    "eslint": "^8.36.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-config-standard-with-typescript": "^34.0.1",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "2.8.4",
-    "typescript": "^4.9.5"
-  }
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.55.0",
+        "eslint": "^8.36.0",
+        "eslint-config-prettier": "^8.6.0",
+        "eslint-config-standard-with-typescript": "^34.0.1",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^15.6.1",
+        "eslint-plugin-prettier": "^4.2.1",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "prettier": "2.8.4",
+        "typescript": "^4.9.5"
+    }
 }
